@@ -4,33 +4,189 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #64A7D1;
+			}		
+			ul,ol,li{
+				list-style: none;
+				font-size: 14px;
+			}
+			.conts{
+				width: 600px;
+				margin: 100px auto;
+				border: 1px solid red;
+				background: #fff;
+			}
+			.conts .text{
+				height: 165px;
+				padding: 10px;
+			}
+			.area{
+				height: 130px;
+				width: 580px;
+				border: 1px solid #ccc;
+			}
+			.textarea{
+				outline: none;
+				overflow: hidden;
+				line-height: 18px;
+				border: none;
+				width: 580px;
+				height: 130px;
+				resize:none;/* 阻止文本域被下拉 */
+			}
+			.title{
+				width: 580px;
+				height: 30px;
+				margin-top: 10px;
+			}
+			.title-1{
+				display: block;
+				float: left;
+			}
+			.title-1 span{
+				margin-right:10px;
+			}
+			.title-2{
+				display: block;
+				float: right;
+			}
+			.title-2 .btn{
+				width: 60px;
+				height: 30px;
+				background: skyblue;
+				border: none;
+				outline: none;
+			}
+			/* ······ */
+			.content{
+				width: 600px;
+				margin:0 auto;
+				background: white;
+				border: 1px solid red;
+				word-wrap:break-word;
+				/* position: relative; */
+			}
+			.content li{
+				min-height: 30px;
+				background: #fff;
+				padding: 5px 0 15px 10px;
+				box-sizing: border-box;
+				margin: 0 0 10px 0;
+				font-size: 12px;
+				position: relative;
+				display: block;
+			}
+			.content li a{
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+			}
+			.content li img{
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				float:left;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="div">
-			<input type="text" name="" id="text" placeholder="请输入你想说的话"/>
-			<button class="btn">发布</button>
-			<ul id="list">
-				<li class="lis"></li>
+		<div class="conts">
+			<div class="text">
+				<div class="area">
+					<textarea class="textarea" id="textarea" rows="" cols=""></textarea>
+				</div>
+				<div class="title">
+					<div class="title-1">
+						<span>图片</span>
+						<span>表情</span>
+						<span>视频</span>
+						<span>话题</span>
+						<span>头条文章</span>
+						<span>...</span>
+					</div>
+					<div class="title-2">
+						<button class="btn" id="btn">发布</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<ul class="lists" id="arc">
+				<!-- <li>
+					<div class="list">
+						<img src="../11.12/images/01.png">
+						<h3>葫芦娃</h3>
+						<p>发布于20秒前</p>
+					</div>
+					<div>
+						大家好
+					</div>
+					<a href="#">删除</a>
+				</li>
+				<li>
+					<div class="list">
+						<img src="../11.12/images/01.png">
+						<h3>葫芦娃</h3>
+						<p>发布于20秒前</p>
+					</div>
+					<div>
+						大家好
+					</div>
+					<a href="#">删除</a>
+				</li> -->
 			</ul>
 		</div>
 	</body>
 </html>
 <script type="text/javascript">
-	// var arr=document.getElementById("div")
-	var text=document.getElementById("text")
-	var btn=document.getElementById("btn")
-	var list=document.getElementById("list")
-	btn.onclick=function(){
-		var v=text.value;
-		var li=document.createElement("li");
-		li.innerHTML=v;
-		var a=document.createElement("a")
-		a.herf="javascript:;";
-		a.innerHTML="删除";
-		a.onclick=function(){
-			list.removeChild(this.parentNode)
+	window.onload=function(){
+		var text=document.getElementById("textarea")
+		var arc=document.getElementById("arc")
+		var btn=document.getElementById("btn")
+		btn.onclick=function(){
+			var st=""
+			var val=text.value;
+			var li=document.createElement("li")
+			st+="<div>"
+				st+="<img src='../11.12/images/01.png'>"
+				st+="<h3>"
+					st+="葫芦娃"
+				st+="</h3>"
+				st+="<p>"
+					st+="发布于20秒前 使用IPhoneX 20"
+				st+="</p>"
+			st+="</div>"
+			st+="<div>"
+				st+=val
+			st+="</div>"
+			li.innerHTML=st;
+			var a=document.createElement("a")
+			a.herf="javascript:;"
+			a.innerHTML="删除";
+			a.onclick=function(){
+				arc.removeChild(this.parentNode)
+			}
+			
+			li.appendChild(a)
+// 			if(arc.children[0]){
+// 				arc.insertBefore(li,arc.childen[0])
+// 				
+// 			}else{
+// 				arc.appendChild(li)
+// 			}
+			if(arc.children[0]){
+				arc.insertBefore(li,arc.children[0])
+			}else{
+				arc.appendChild(li)
+			}
 		}
-		li.appendChild(a)
-		if(list.children[0])
 	}
+	
+	
 </script>
