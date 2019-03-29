@@ -4,9 +4,33 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title></title>
-		<link rel="stylesheet" href="css/demo.css">
 	</head>
 	<body>
-		<h1>我的个人网站</h1>
+		<div id="div">
+			<input type="text" name="" id="text" placeholder="请输入你想说的话"/>
+			<button class="btn">发布</button>
+			<ul id="list">
+				<li class="lis"></li>
+			</ul>
+		</div>
 	</body>
 </html>
+<script type="text/javascript">
+	// var arr=document.getElementById("div")
+	var text=document.getElementById("text")
+	var btn=document.getElementById("btn")
+	var list=document.getElementById("list")
+	btn.onclick=function(){
+		var v=text.value;
+		var li=document.createElement("li");
+		li.innerHTML=v;
+		var a=document.createElement("a")
+		a.herf="javascript:;";
+		a.innerHTML="删除";
+		a.onclick=function(){
+			list.removeChild(this.parentNode)
+		}
+		li.appendChild(a)
+		if(list.children[0])
+	}
+</script>
